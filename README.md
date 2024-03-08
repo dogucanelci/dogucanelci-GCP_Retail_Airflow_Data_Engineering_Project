@@ -1,4 +1,4 @@
-![alt text](image.png)
+![alt text](images/image.png)
 
 <h1 style="display: inline-block;"> Retail Data End to End Data Engineering Project on Google Cloud Platform Orchestrated by Airflow </h1>
 
@@ -36,14 +36,14 @@ Each step which are described above represents a task in Retail DAG. You can see
 
 You can find the detailed information on the diagram below:
 
-![alt text](project_structure.jpg)
+![alt text](images/project_structure.jpg)
 
 ---------------------------
 
 
 Retail Dag Architecture:
 
-![alt text](dag_structure.png)
+![alt text](images/dag_structure.png)
 
 ---------------------------
 
@@ -56,14 +56,14 @@ Retail Dag Architecture:
 - Requirements are installed.
 
   
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 <a name="data-ingestion"></a>
 ### 📤 Data Ingestion
 - retail.py file is created for Retail DAG implementation.
 - Retail dataset is pushed to Google Bucket Storage from defined container environment(local env) by new task implementation in retail1 DAG as shown below:
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
   
 
 <a name="data-loading"></a>
@@ -72,58 +72,58 @@ Retail Dag Architecture:
 - First task create an empty table with defined schema informations.
 - Second task apply loading process.
 
-![alt text](image-3.png)
-![alt text](image-4.png)
+![alt text](images/image-3.png)
+![alt text](images/image-4.png)
 
 
 <a name="soda_raw"></a>
 ### 📥 Data Quality Check(for Raw Data)
 - Data Quality check is applied by open source tool SODA for raw data just loaded in BigQuery by creating a new task in retail1 DAG.
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
 - This check consists basic steps like data type and column name.
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 <a name="dbt_transform_modeling"></a>
 ### 📊 Data Modeling and Transformation
 - Data Modeling design is done and transformation scripts are implemented which is used by dbt to create new dimensional model in BigQuery.
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
   
 
 <a name="soda_transformed"></a>
 ### 📊 Data Quality Check(for fact and dim tables)
 - Data Quality check is applied by open source tool SODA for dimensional model data just transformed in BigQuery by creating a new task in retail1 DAG.
 
-![alt text](image-10.png)
+![alt text](images/image-10.png)
 
 - This check consists detailed steps like:
     -   All weekdays are in range 0-6
     -   All datetimes,customers,products are unique
     -   Price,total amounts must be greater than zero etc.
 
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 
 
 <a name="dbt_toplayer_tables"></a>
 ### 📊 Data Transformation
 - Data transformation scripts are implemented to create multi-dimensional top layer tables to feed the report directly by dbt tool.
 
-![alt text](image-11.png)
+![alt text](images/image-11.png)
 
 - Process is implemented in retail1 DAG as task.
 
-![alt text](image-12.png)
+![alt text](images/image-12.png)
 
 <a name="soda_toplayer"></a>
 ### 📊 Data Quality Check(for top-layer tables)
 - Data Quality check is applied by open source tool SODA for multi-dimensional model data by creating a new task in retail1 DAG.
 
-![alt text](image-13.png)
+![alt text](images/image-13.png)
 
 - This check consists detailed steps like:
     -   All customers have a country
@@ -133,7 +133,7 @@ Retail Dag Architecture:
 ### 📊 Data Reporting
 - BigQuery is connected with Looker Studio BI , and used the Views of the DB to create interactive and insightful data visualizations.
 
-![alt text](image-14.png)
+![alt text](images/image-14.png)
 
 
 ### 🛠️ Technologies Used
