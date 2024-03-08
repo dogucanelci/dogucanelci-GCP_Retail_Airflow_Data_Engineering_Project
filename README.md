@@ -8,29 +8,29 @@ Dataset Link: [Online Retail Dataset](https://www.kaggle.com/datasets/mashlyn/on
 
 
 ## 📝 Table of Contents
-1. [Project Overview](#introduction)
-2. [Project and DAG Architecture](#project-architecture) 
-  2.1. [Installation and Initialization](#install-initiate) 
-  2.2. [Data Ingestion](#data-ingestion) 
-  2.3. [Data Loading](#data-loading) 
-  2.4. [Data Quality Check (Raw Data)](#soda_raw) 
-  2.5. [Data Transformation and Modeling](#dbt_transform_modeling) 
-  2.6. [Data Quality Check (Transformed Data)](#soda_transformed) 
-  2.7. [Data Transformation (Dimensional to Multi-Dimensional)](#dbt_toplayer_tables) 
-  2.8. [Data Quality Check (Top Layer Data)](#soda_toplayer) 
-  2.9. [Data Reporting](#data-reporting)
-3. [Credits](#credits)
-4. [Contact](#contact)
+1. [Project Overview](#introduction) <br>
+2. [Project and DAG Architecture](#project-architecture) <br>
+  2.1. [Installation and Initialization](#install-initiate) <br>
+  2.2. [Data Ingestion](#data-ingestion) <br>
+  2.3. [Data Loading](#data-loading) <br>
+  2.4. [Data Quality Check (Raw Data)](#soda_raw) <br>
+  2.5. [Data Transformation and Modeling](#dbt_transform_modeling) <br>
+  2.6. [Data Quality Check (Transformed Data)](#soda_transformed) <br>
+  2.7. [Data Transformation (Dimensional to Multi-Dimensional)](#dbt_toplayer_tables) <br>
+  2.8. [Data Quality Check (Top Layer Data)](#soda_toplayer) <br>
+  2.9. [Data Reporting](#data-reporting) <br>
+3. [Credits](#credits) <br>
+4. [Contact](#contact) <br>
 
 <a name="introduction"></a>
 ## 🔬 Project Overview 
 
-This project is an end-to-end Data Engineering project orchestrated by Airflow, using multiple technologies, and applied on the Google Cloud platform. Online Retail Dataset is used for this project. 
-In first step, Astro CLI and its dependicies are installed. Astro CLI is a open source commandline interface tool which is used for install, initialize and use airflow in local so easily. It also build file and folder template which is necessary for airflow usage. It creates a container to setup airflow, deploy and run defined dags in the container by using Docker. 
-In next step,retail dataset is pushed to Google Bucket Storage from defined container environment(local env). Then it is loaded into Google BigQuery Data Warehouse. 
-In next step, Data Quality check is applied by open source tool SODA. It has useful logging and alert functions to detect any inconsistencies during ETL processing of data with so basic yaml file definitions. After that, Raw Data is investigated and Data Modeling is applied by DBT, which is easy to implement, capable to high-lineage an open source tool used for transformation process of ETL. In this part, fact and dim tables are created into BigQuery Data Warehouse. 
+This project is an end-to-end Data Engineering project orchestrated by Airflow, using multiple technologies, and applied on the Google Cloud platform. Online Retail Dataset is used for this project. <br>
+In first step, Astro CLI and its dependicies are installed. Astro CLI is a open source commandline interface tool which is used for install, initialize and use airflow in local so easily. It also build file and folder template which is necessary for airflow usage. It creates a container to setup airflow, deploy and run defined dags in the container by using Docker. <br>
+In next step,retail dataset is pushed to Google Bucket Storage from defined container environment(local env). Then it is loaded into Google BigQuery Data Warehouse. <br>
+In next step, Data Quality check is applied by open source tool SODA. It has useful logging and alert functions to detect any inconsistencies during ETL processing of data with so basic yaml file definitions. After that, Raw Data is investigated and Data Modeling is applied by DBT, which is easy to implement, capable to high-lineage an open source tool used for transformation process of ETL. In this part, fact and dim tables are created into BigQuery Data Warehouse. <br>
 After data quality check by SODA, top layer, multi dimensional tables are created by transformation of dbt and last part, Retail Analytic Report is created in Google Looker Studio by using top layer transformed data.
-Each step which are described above represents a task in Retail DAG. You can see DAG structure and all tasks in detail in below.
+Each step which are described above represents a task in Retail DAG. You can see DAG structure and all tasks in detail in below.<br>
 <a name="project-architecture"></a>
 ## 📝 Project Architecture
 
